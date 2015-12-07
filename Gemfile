@@ -26,6 +26,8 @@ gem 'spring',        group: :development
 gem 'httparty'
 gem 'hashie'
 
+gem 'plaid'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'

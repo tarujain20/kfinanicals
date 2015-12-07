@@ -26,5 +26,12 @@ module Kfinanicals
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    Plaid.config do |p|
+      p.customer_id = ENV['PLAID_CUSTOMER_ID']
+      p.secret = ENV['PLAID_SECRET_KEY']
+      # sandbox = 'https://tartan.plaid.com/'
+      # prod = 'https://api.plaid.com/'
+      p.environment_location = 'https://tartan.plaid.com/'
+    end
   end
 end

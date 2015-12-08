@@ -10,13 +10,14 @@
 # ENV['SECRET_TWO'] = 'topsecret'
 #
 class EnvChecker
+  DEBUG = false
   def initialize(required_variables)
     @required_variables = required_variables
   end
   
   def read
     if File.exists?(filename)
-      STDERR.puts "loading secrets from #{filename}"
+      STDERR.puts "loading secrets from #{filename}" if DEBUG
       load(filename)
       STDERR.puts "WARNING: found secrets file #{filename} in production" if
         Rails.env.production?

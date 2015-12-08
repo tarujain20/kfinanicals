@@ -5,7 +5,7 @@ class CreateHighInterest < ActiveRecord::Migration
       t.integer :account_id # nullable because may be associated later
       t.integer :rate_points
       
-      t.timstamps null: false
+      t.timestamps null: false
     end
   end
 end

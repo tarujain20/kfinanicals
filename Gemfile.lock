@@ -51,6 +51,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    haml (4.0.7)
+      tilt
     hashie (3.4.3)
     hike (1.2.3)
     httparty (0.13.7)
@@ -158,6 +160,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
+  haml
   hashie
   httparty
   jbuilder (~> 2.0)

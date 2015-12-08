@@ -27,6 +27,7 @@ gem 'httparty'
 gem 'hashie'
 
 gem 'plaid'
+gem 'haml'
 
 group :test, :development do
   gem 'rspec-rails'

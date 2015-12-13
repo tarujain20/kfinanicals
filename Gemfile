@@ -26,6 +26,10 @@ gem 'spring',        group: :development
 gem 'httparty'
 gem 'hashie'
 
+gem 'plaid' # accessing accounts api
+gem 'haml'
+gem 'devise' # user auth
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'

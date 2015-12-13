@@ -18,3 +18,4 @@
 routes.txt
 .sass-cache/
 .DS_Store
+config/env_secrets.rb

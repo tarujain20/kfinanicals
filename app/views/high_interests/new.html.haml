@@ -1,0 +1,59 @@
+-# Just putting some basic styling in here for now. It doesn't belong here.
+:css
+  input {
+    font-size: 32px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  #balance {
+    width: 4em;
+  }
+  #rate {
+    width: 3em;
+  }
+  .explain {
+  max-width: 30em;
+  }
+
+.explain
+  %p
+    Banks offer terrible interest rates which are hardly an incentive for someone
+    to save.
+  %p
+    The High Interest product monitors the daily balance in a minor's account,
+    and computes interest at the end of the month, just like your bank would.
+  %p
+    You then get a monthly notice letting you know how much interest you owe
+    to your minor.
+  
+= label_tag :balance, "Account Balance"
+$
+= text_field_tag :balance, 100, class: 'recompute', type: 'number', min: 5
+
+= form_for(@high_interest) do |f|
+  = label_tag :rate, "Annual Interest Rate"
+  = text_field_tag :rate, 0 , size: 2, value: 30, class: "recompute", type: :number, min: 0, max: 1000
+  \%
+  
+= label_tag :interest, "Monthly Interest"
+$
+= text_field_tag :interest, 1, readonly: true, size: 6
+
+
+:javascript
+  var computeInterest = function(balance, rate) {
+    var monthly_compounded = Math.pow(1 + rate/(100 * 365), 30) - 1;
+    var interest = balance * monthly_compounded;
+    // console.log(rate, monthly_compounded, interest);
+    return interest;
+  }
+  var recomputeOnChange = function() {
+    var balance = parseInt($("#balance").val());
+    var rate = parseFloat($("#rate").val());
+    var interest = computeInterest(balance, rate);
+    $("#interest").val(interest.toFixed(2));
+  };
+  recomputeOnChange();
+  $(".recompute").change(recomputeOnChange);
+  $(".recompute").keyup(recomputeOnChange);
